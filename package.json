@@ -1,0 +1,42 @@
+{
+  "name": "is-valid-ssn",
+  "version": "0.0.1",
+  "description": "Validate Social Security Number",
+  "main": "dist/index.js",
+  "homepage": "https://github.com/seegno/is-valid-ssn",
+  "bugs": "https://github.com/seegno/is-valid-ssn/issues",
+  "repository": "seegno/is-valid-ssn",
+  "author": "Seegno",
+  "license": "MIT",
+  "keywords": [
+    "IRS",
+    "SSN",
+    "TIN"
+  ],
+  "options": {
+    "mocha": "--compilers js:babel-register --recursive --require should"
+  },
+  "scripts": {
+    "build": "rm -rf dist/* && babel --copy-files src/ --out-dir dist/",
+    "changelog": "github_changelog_generator --no-issues",
+    "lint": "eslint src test && jscs src test",
+    "prepublish": "npm run lint && npm test && npm run build",
+    "test": "NODE_ENV=test mocha $npm_package_options_mocha"
+  },
+  "dependencies": {
+    "lodash": "3.10.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.4.5",
+    "babel-eslint": "5.0.0-beta9",
+    "babel-preset-es2015-node4": "2.0.3",
+    "babel-register": "6.4.3",
+    "eslint": "1.8.0",
+    "eslint-config-seegno": "2.0.0",
+    "eslint-plugin-babel": "3.1.0",
+    "jscs": "2.9.0",
+    "jscs-config-seegno": "1.1.0",
+    "mocha": "2.4.5",
+    "should": "8.2.1"
+  }
+}
