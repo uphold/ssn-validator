@@ -1,6 +1,6 @@
 {
   "name": "is-valid-ssn",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Validate Social Security Number",
   "main": "dist/index.js",
   "homepage": "https://github.com/seegno/is-valid-ssn",

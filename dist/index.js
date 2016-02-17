@@ -16,7 +16,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * Blacklist.
  */
 
-const blacklist = ['078051120', '219099999', '457555462'];
+var blacklist = ['078051120', '219099999', '457555462'];
 /**
  * See `http://www.irs.gov/Individuals/General-ITIN-Information` for more information.
  *
@@ -29,7 +29,7 @@ const blacklist = ['078051120', '219099999', '457555462'];
  * Module dependencies.
  */
 
-const expression = /^(?!666|000|9\d{2})\d{3}(?!00)\d{2}(?!0{4})\d{4}$/;
+var expression = /^(?!666|000|9\d{2})\d{3}(?!00)\d{2}(?!0{4})\d{4}$/;
 
 /**
  * Validate function.
