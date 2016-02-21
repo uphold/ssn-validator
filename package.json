@@ -1,6 +1,6 @@
 {
   "name": "ssn-validator",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Social Security Number validator and masker",
   "author": "Seegno",
   "license": "MIT",
