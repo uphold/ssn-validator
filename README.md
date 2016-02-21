@@ -78,6 +78,12 @@ mask('123123123');
 npm test
 ```
 
+## Release
+
+```sh
+npm version [<newversion> | major | minor | patch] -m "Release %s"
+```
+
 ## License
 MIT
 
