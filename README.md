@@ -31,10 +31,10 @@ This method validates if the given value is a valid `Social Security Number`.
 isValid({});
 // => false
 
-isValid('123-123-123');
+isValid('123-12-3123');
 // => false
 
-isValid('123-123-123', { strict: false });
+isValid('123-12-3123', { strict: false });
 // => true
 
 isValid('123123123');
@@ -60,14 +60,14 @@ This method will help you protect this sensitive piece of information by obfusca
 mask({});
 // Throws an Error.
 
-mask('123-123-123');
+mask('123-12-3123');
 // Throws an Error.
 
-mask('123-123-123', { strict: false });
-// => XXX-X23-123
+mask('123-12-3123', { strict: false });
+// => XXX-XX-3123
 
 mask('123123123');
-// => XXXX23123
+// => XXXXX3123
 ```
 
 * * *
