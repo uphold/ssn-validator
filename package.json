@@ -25,14 +25,14 @@
     "mocha": "--compilers js:babel-register --recursive --require should"
   },
   "scripts": {
-    "changelog": "github_changelog_generator --no-issues --header-label='# Changelog'",
+    "changelog": "github_changelog_generator --no-issues --header-label='# Changelog' --future-release=$npm_config_future_release && sed -i '' -e :a -e '$d;N;2,4ba' -e 'P;D' CHANGELOG.md",
     "cover": "babel-node node_modules/.bin/isparta cover --report html _mocha -- $npm_package_options_mocha",
     "lint": "eslint src test && jscs src test",
     "prepublish": "npm run transpile",
     "testdocker": "docker-compose run --rm sut",
     "test": "mocha $npm_package_options_mocha",
     "transpile": "rm -rf dist/* && babel src --out-dir dist",
-    "version": "npm run changelog -- --future-release=$npm_package_version && sed -i '' -e :a -e '$d;N;2,3ba' -e 'P;D' CHANGELOG.md && npm run transpile && git add -A CHANGELOG.md dist"
+    "version": "npm run changelog --future-release=$npm_package_version && npm run transpile && git add -A CHANGELOG.md dist"
   },
   "devDependencies": {
     "babel-cli": "^6.4.0",
