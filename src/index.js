@@ -18,7 +18,7 @@ const blacklist = ['078051120', '219099999', '457555462'];
  */
 
 const expressions = {
-  soft: /^(?!666|000|9\d{2})\d{3}[- ]+?(?!00)\d{2}[- ]+?(?!0{4})\d{4}$/,
+  format: /^(?!666|000|9\d{2})\d{3}[- ]{0,1}(?!00)\d{2}[- ]{0,1}(?!0{4})\d{4}$/,
   strict: /^(?!666|000|9\d{2})\d{3}(?!00)\d{2}(?!0{4})\d{4}$/
 };
 
@@ -26,8 +26,9 @@ const expressions = {
  * Validate function.
  */
 
-export function isValid(ssn, { strict = true } = {}) {
-  const mode = strict === true ? 'strict' : 'soft';
+export function isValid(value, { strict = true } = {}) {
+  const mode = typeof strict === 'boolean' ? 'strict' : 'format';
+  const ssn = strict === false ? value.replace(/[- ]/g, '') : value;
 
   if (!expressions[mode].test(ssn)) {
     return false;

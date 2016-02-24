@@ -11,8 +11,12 @@ import { isValid, mask } from '../src';
  */
 
 const numbers = {
-  invalid: ['00123456', '078051120', '219099999', '457555462'],
-  valid: ['011234567', '021234567', '031234567']
+  invalid: ['00123456', '001_23_456', '078051120f', '219#09#9999'],
+  valid: {
+    format: ['011-23-4567', '021 23 4567', '031-23-4567'],
+    soft: ['0-1-1    23 4567', '021 - 23 - 4 567', '-0 3 1 2 3-45 6 7'],
+    strict: ['011234567', '021234567', '031234567']
+  }
 };
 
 /**
@@ -21,28 +25,56 @@ const numbers = {
 
 describe('SsnValidator', () => {
   describe('isValid()', () => {
-    it('should return `false` if value is invalid', () => {
+    it('should return false if number is invalid', () => {
       for (let i = 0; i < numbers.invalid.length; i++) {
-        isValid(numbers.invalid[i]).should.be.false();
+        isValid(numbers.invalid[i], { strict: 'format' }).should.be.false();
+        isValid(numbers.invalid[i], { strict: false }).should.be.false();
+        isValid(numbers.invalid[i], { strict: true }).should.be.false();
       }
     });
 
-    it('should return `false` if value is correctly formatted and `options.strict` is `true`', () => {
-      isValid('011-23-4567', { strict: true }).should.be.false();
+    it('should return true for strict and formatted numbers if strict is format', () => {
+      const invalid = [].concat(numbers.invalid, numbers.valid.soft);
+      const valid = [].concat(numbers.valid.format, numbers.valid.strict);
+
+      for (let i = 0; i < invalid.length; i++) {
+        isValid(invalid[i], { strict: 'format' }).should.be.false();
+      }
+
+      for (let i = 0; i < valid.length; i++) {
+        isValid(valid[i], { strict: 'format' }).should.be.true();
+      }
     });
 
-    it('should return `false` if value is correctly formatted and `options.strict` is `false`', () => {
-      isValid('011 -23  -  4567', { strict: false }).should.be.true();
+    it('should return true for all valid numbers if strict is false', () => {
+      const valid = [].concat(numbers.valid.format, numbers.valid.soft, numbers.valid.strict);
+
+      for (let i = 0; i < numbers.invalid.length; i++) {
+        isValid(numbers.invalid[i], { strict: false }).should.be.false();
+      }
+
+      for (let i = 0; i < valid.length; i++) {
+        isValid(valid[i], { strict: false }).should.be.true();
+      }
     });
 
-    it('should return `true` if value is valid and `options.strict` is `true`', () => {
-      for (let i = 0; i < numbers.valid.length; i++) {
-        isValid(numbers.valid[i], { strict: true }).should.be.true();
+    it('should return true only for strict numbers if strict is true', () => {
+      const invalid = [].concat(numbers.invalid, numbers.valid.format, numbers.valid.soft);
+      const valid = numbers.valid.strict;
+
+      for (let i = 0; i < invalid.length; i++) {
+        isValid(invalid[i], { strict: true }).should.be.false();
+      }
+
+      for (let i = 0; i < valid.length; i++) {
+        isValid(valid[i], { strict: true }).should.be.true();
       }
     });
 
     it('should be `strict` by default', () => {
-      isValid('011-23-4567').should.be.false();
+      isValid(numbers.valid.format[0]).should.be.false();
+      isValid(numbers.valid.soft[0]).should.be.false();
+      isValid(numbers.valid.strict[0]).should.be.true();
     });
   });
 
@@ -58,23 +90,10 @@ describe('SsnValidator', () => {
       }
     });
 
-    it('should throw an error even if value is correctly formatted', () => {
-      try {
-        mask('011-23-4567');
-
-        should.fail();
-      } catch (e) {
-        e.should.be.instanceOf(Error);
-        e.message.should.equal('Invalid Social Security Number');
-      }
-    });
-
-    it('should mask a valid value if correctly formatted and `options.strict` is `false`', () => {
-      mask('011-23-4567', { strict: false }).should.equal('XXX-XX-4567');
-    });
-
     it('should mask a valid value', () => {
-      mask(numbers.valid[0]).should.equal('XXXXX4567');
+      mask(numbers.valid.format[0], { strict: 'format' }).should.equal('XXX-XX-4567');
+      mask(numbers.valid.soft[0], { strict: false }).should.equal('X-X-X    XX 4567');
+      mask(numbers.valid.strict[0], { strict: true }).should.equal('XXXXX4567');
     });
   });
 });
