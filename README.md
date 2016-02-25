@@ -21,7 +21,7 @@ This method validates if the given value is a valid `Social Security Number`.
 
 1. `value` *(&#42;)*: The value to validate.
 2. `[options]` *(Object)*: The options object.
-3. `[options.strict=true]` _(boolean)_: Whether or not formatting characters such as dashes or spaces should be rejected.
+3. `[options.strict=true]` _(boolean|string)_: Whether or not formatting characters such as dashes or spaces should be rejected and if they must be in their precise location.
 
 #### Returns
 *(boolean)*:  Returns `true` if `value` is a valid Social Security Number, else `false`.
@@ -31,10 +31,16 @@ This method validates if the given value is a valid `Social Security Number`.
 isValid({});
 // => false
 
-isValid('123-123-123');
+isValid('123-12-3123');
 // => false
 
-isValid('123-123-123', { strict: false });
+isValid('1-2-3123123', { strict: false });
+// => true
+
+isValid('1-2-3123123', { strict: 'format' });
+// => false
+
+isValid('123-12-3123', { strict: 'format' });
 // => true
 
 isValid('123123123');
@@ -50,7 +56,7 @@ This method will help you protect this sensitive piece of information by obfusca
 
 1. `value` *(&#42;)*: The value to mask.
 2. `[options]` *(Object)*: The options object.
-3. `[options.strict=true]` _(boolean)_: Whether or not formatting characters such as dashes or spaces should be rejected.
+3. `[options.strict=true]` _(boolean|string)_: Whether or not formatting characters such as dashes or spaces should be rejected and if they must be in their precise location.
 
 #### Returns
 *(string)*: Returns the masked value.
@@ -60,14 +66,20 @@ This method will help you protect this sensitive piece of information by obfusca
 mask({});
 // Throws an Error.
 
-mask('123-123-123');
+mask('123-12-3123');
 // Throws an Error.
 
-mask('123-123-123', { strict: false });
-// => XXX-X23-123
+mask('1-2-3123123', { strict: false });
+// => X-X-XXX3123
+
+mask('1-2-3123123', { strict: 'format' });
+// Throws an Error.
+
+mask('123-12-3123', { strict: 'format' });
+// => XXX-XX-3123
 
 mask('123123123');
-// => XXXX23123
+// => XXXXX3123
 ```
 
 * * *
