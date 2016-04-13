@@ -1,5 +1,5 @@
 # ssn-validator
-Validate and mask U.S. Social Security Numbers.
+Validate and mask a U.S. Social Security Number (SSN).
 
 ## Status
 [![npm version][npm-image]][npm-url] [![build status][travis-image]][travis-url]
@@ -12,70 +12,71 @@ npm install ssn-validator --save
 ```
 
 ## Usage
-
-### `isValid(value, [options])`
-
+### `isValid(value)`
 This method validates if the given value is a valid `Social Security Number`.
 
 #### Arguments
-
-1. `value` *(&#42;)*: The value to validate.
-2. `[options]` *(Object)*: The options object.
-3. `[options.strict=true]` _(boolean)_: Whether or not formatting characters such as dashes or spaces should be rejected.
+1. `value` _(*)_: The value to validate.
 
 #### Returns
-*(boolean)*:  Returns `true` if `value` is a valid Social Security Number, else `false`.
+_(boolean)_:  Returns whether the input value is a valid SSN or not.
 
 #### Example
+
 ```js
 isValid({});
 // => false
 
-isValid('123-123-123');
+isValid('0-1-1234567');
 // => false
 
-isValid('123-123-123', { strict: false });
+isValid('011-23-4567');
 // => true
 
-isValid('123123123');
+isValid('011234567');
 // => true
 ```
+
 --------------------------------------------------------------------------------
 
-### `mask(value, [options])`
-
+### `mask(value)`
 This method will help you protect this sensitive piece of information by obfuscating some digits.
 
 #### Arguments
-
-1. `value` *(&#42;)*: The value to mask.
-2. `[options]` *(Object)*: The options object.
-3. `[options.strict=true]` _(boolean)_: Whether or not formatting characters such as dashes or spaces should be rejected.
+1. `value` _(*)_: The value to mask.
 
 #### Returns
-*(string)*: Returns the masked value.
+_(string)_: Returns the masked value by replacing value certain digits by 'X'.
 
 #### Example
+
 ```js
 mask({});
 // Throws an Error.
 
-mask('123-123-123');
+mask('0-1-1234567');
 // Throws an Error.
 
-mask('123-123-123', { strict: false });
-// => XXX-X23-123
+mask('011-23-4567');
+// => XXX-XX-4567
 
-mask('123123123');
-// => XXXX23123
+mask('011234567');
+// => XXXXX4567
 ```
 
-* * *
+--------------------------------------------------------------------------------
 
 ## Tests
+To test using a local installation of `node.js`:
 
 ```sh
 npm test
+```
+
+To test using Docker exclusively:
+
+```sh
+docker-compose run --rm sut
 ```
 
 ## Release
@@ -86,10 +87,6 @@ npm version [<newversion> | major | minor | patch] -m "Release %s"
 
 ## License
 MIT
-
-## Credits
-
-Many thanks to [miguelmota/is-valid-ssn](https://github.com/miguelmota/is-valid-ssn) for the original inspiration.
 
 [npm-image]: https://img.shields.io/npm/v/ssn-validator.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/ssn-validator

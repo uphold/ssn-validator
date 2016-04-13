@@ -1,4 +1,4 @@
 sut:
-  build: .
-  command: test
-  entrypoint: npm
+  image: seegno/node:4-test
+  volumes:
+    - .:/app
