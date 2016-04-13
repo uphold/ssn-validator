@@ -1,5 +1,12 @@
 # Changelog
 
+## [v2.0.1](https://github.com/seegno/ssn-validator/tree/v2.0.1) (2016-04-14)
+[Full Changelog](https://github.com/seegno/ssn-validator/compare/v2.0.0...v2.0.1)
+
+**Merged pull requests:**
+
+- Fix primary entry point [\#9](https://github.com/seegno/ssn-validator/pull/9) ([franciscocardoso](https://github.com/franciscocardoso))
+
 ## [v2.0.0](https://github.com/seegno/ssn-validator/tree/v2.0.0) (2016-04-13)
 [Full Changelog](https://github.com/seegno/ssn-validator/compare/v1.0.0...v2.0.0)
 
