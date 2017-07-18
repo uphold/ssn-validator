@@ -90,5 +90,5 @@ MIT
 
 [npm-image]: https://img.shields.io/npm/v/ssn-validator.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/ssn-validator
-[travis-image]: https://img.shields.io/travis/seegno/ssn-validator.svg?style=flat-square
-[travis-url]: https://img.shields.io/travis/seegno/ssn-validator.svg?style=flat-square
+[travis-image]: https://img.shields.io/travis/uphold/ssn-validator.svg?style=flat-square
+[travis-url]: https://img.shields.io/travis/uphold/ssn-validator.svg?style=flat-square
