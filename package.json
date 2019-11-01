@@ -36,7 +36,7 @@
     "babel-eslint": "^6.0.2",
     "babel-preset-es2015": "^6.5.0",
     "babel-register": "^6.3.13",
-    "eslint": "^2.7.0",
+    "eslint": "^6.6.0",
     "eslint-config-seegno": "^4.0.0",
     "eslint-plugin-babel": "^3.0.0",
     "eslint-plugin-sort-class-members": "^1.0.1",
