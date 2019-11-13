@@ -1,3 +1,4 @@
+'use strict';
 
 /**
  * Social Security number (SSN) is a nine-digit number issued to U.S. citizens, permanent residents,
@@ -23,7 +24,7 @@ const expression = /^(?!666|000|9\d{2})\d{3}[- ]{0,1}(?!00)\d{2}[- ]{0,1}(?!0{4}
  * Validate function.
  */
 
-export function isValid(value) {
+function isValid(value) {
   if (!expression.test(value)) {
     return false;
   }
@@ -38,10 +39,16 @@ export function isValid(value) {
  * E.g. "123456789" -> "XXXXX6789", "123-45-6789" -> "XXX-XX-6789".
  */
 
-export function mask(value) {
+function mask(value) {
   if (!isValid(value)) {
     throw new Error('Invalid Social Security Number');
   }
 
   return `${value.substr(0, value.length - 4).replace(/[\w]/g, 'X')}${value.substr(-4)}`;
 }
+
+/**
+ * Exports.
+ */
+
+module.exports = { isValid, mask };
