@@ -73,12 +73,6 @@ To test using a local installation of `node.js`:
 npm test
 ```
 
-To test using Docker exclusively:
-
-```sh
-docker-compose run --rm sut
-```
-
 ## Release
 
 ```sh

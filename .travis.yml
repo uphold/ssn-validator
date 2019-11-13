@@ -1,7 +1,6 @@
-language: bash
+language: node_js
 
-script:
-  - docker-compose run --rm sut
-
-services:
-  - docker
+node_js:
+  - 8
+  - 10
+  - 12
