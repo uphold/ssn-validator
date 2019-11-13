@@ -1,10 +1,11 @@
+'use strict';
 
 /**
  * Module dependencies.
  */
 
-import should from 'should';
-import { isValid, mask } from '../src';
+const { isValid, mask } = require('../src');
+const should = require('should');
 
 /**
  * `Social Security Number` samples.
