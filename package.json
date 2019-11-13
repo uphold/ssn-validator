@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^6.0.2",
-    "eslint": "^2.7.0",
+    "eslint": "^4.18.2",
     "eslint-config-seegno": "^4.0.0",
     "eslint-plugin-babel": "^3.0.0",
     "eslint-plugin-sort-class-members": "^1.0.1",
