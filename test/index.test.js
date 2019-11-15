@@ -5,7 +5,6 @@
  */
 
 const { isValid, mask } = require('../src');
-const should = require('should');
 
 /**
  * `Social Security Number` samples.
@@ -23,11 +22,11 @@ const numbers = {
 describe('SsnValidator', () => {
   describe('isValid()', () => {
     it('should return `false` if number is invalid', () => {
-      numbers.invalid.forEach(number => isValid(number).should.be.false());
+      numbers.invalid.forEach(number => expect(isValid(number)).toBeFalsy());
     });
 
     it('should return `true` if number is valid', () => {
-      numbers.valid.forEach(number => isValid(number).should.be.true());
+      numbers.valid.forEach(number => expect(isValid(number)).toBeTruthy());
     });
   });
 
@@ -36,18 +35,18 @@ describe('SsnValidator', () => {
       try {
         mask(numbers.invalid[0]);
 
-        should.fail();
+        fail();
       } catch (e) {
-        e.should.be.instanceOf(Error);
-        e.message.should.equal('Invalid Social Security Number');
+        expect(e).toBeInstanceOf(Error);
+        expect(e.message).toEqual('Invalid Social Security Number');
       }
     });
 
     it('should mask a valid value', () => {
-      mask(numbers.valid[0]).should.equal('XXX-XX-4567');
-      mask(numbers.valid[1]).should.equal('XXX-XX 4567');
-      mask(numbers.valid[2]).should.equal('XXX XX 4567');
-      mask(numbers.valid[3]).should.equal('XXXXX4567');
+      expect(mask(numbers.valid[0])).toEqual('XXX-XX-4567');
+      expect(mask(numbers.valid[1])).toEqual('XXX-XX 4567');
+      expect(mask(numbers.valid[2])).toEqual('XXX XX 4567');
+      expect(mask(numbers.valid[3])).toEqual('XXXXX4567');
     });
   });
 });

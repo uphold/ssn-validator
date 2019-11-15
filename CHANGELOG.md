@@ -1,30 +1,11 @@
 # Changelog
 
-## [v2.0.1](https://github.com/uphold/ssn-validator/tree/v2.0.1) (2016-04-14)
-[Full Changelog](https://github.com/uphold/ssn-validator/compare/v2.0.0...v2.0.1)
-
-**Merged pull requests:**
-
+## [2.0.1](https://github.com/uphold/ssn-validator/releases/tag/v2.0.1) (2019-11-14)
+- Remove babel [\#13](https://github.com/uphold/ssn-validator/pull/13) ([cristianooliveira](https://github.com/cristianooliveira))
+- Add LICENSE file with MIT license text [\#11](https://github.com/uphold/ssn-validator/pull/11) ([7patricia](https://github.com/7patricia))
+- Update ownership [\#10](https://github.com/uphold/ssn-validator/pull/10) ([ruimarinho](https://github.com/ruimarinho))
 - Fix primary entry point [\#9](https://github.com/uphold/ssn-validator/pull/9) ([franciscocardoso](https://github.com/franciscocardoso))
-
-## [v2.0.0](https://github.com/uphold/ssn-validator/tree/v2.0.0) (2016-04-13)
-[Full Changelog](https://github.com/uphold/ssn-validator/compare/v1.0.0...v2.0.0)
-
-**Merged pull requests:**
-
 - Update algorithm to accept formatted and non formatted numbers [\#8](https://github.com/uphold/ssn-validator/pull/8) ([franciscocardoso](https://github.com/franciscocardoso))
-
-## [v1.0.0](https://github.com/uphold/ssn-validator/tree/v1.0.0) (2016-02-21)
-[Full Changelog](https://github.com/uphold/ssn-validator/compare/v0.0.2...v1.0.0)
-
-**Merged pull requests:**
-
 - Add automated release process [\#4](https://github.com/uphold/ssn-validator/pull/4) ([ruimarinho](https://github.com/ruimarinho))
 - Add `strict` option [\#2](https://github.com/uphold/ssn-validator/pull/2) ([franciscocardoso](https://github.com/franciscocardoso))
-
-## [v0.0.2](https://github.com/uphold/ssn-validator/tree/v0.0.2) (2016-02-17)
-[Full Changelog](https://github.com/uphold/ssn-validator/compare/v0.0.1...v0.0.2)
-
-**Merged pull requests:**
-
 - Update `es2015-node4` to `es2015` [\#3](https://github.com/uphold/ssn-validator/pull/3) ([ruipenso](https://github.com/ruipenso))

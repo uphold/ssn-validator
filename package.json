@@ -22,25 +22,14 @@
     "url": "https://github.com/uphold/ssn-validator.git"
   },
   "scripts": {
-    "changelog": "github_changelog_generator --no-issues --header-label='# Changelog' --future-release=v$npm_config_future_release && sed -i '' -e :a -e '$d;N;2,4ba' -e 'P;D' CHANGELOG.md",
-    "coverage": "babel-node node_modules/.bin/isparta cover --report html _mocha -- $npm_package_options_mocha",
-    "lint": "eslint src test && jscs src test",
-    "test": "mocha $npm_package_options_mocha",
-    "testdocker": "docker-compose run --rm sut",
-    "version": "npm run changelog --future-release=$npm_package_version && git add -A CHANGELOG.md dist"
+    "changelog": "uphold-scripts changelog $npm_package_version",
+    "lint": "uphold-scripts lint",
+    "release": "uphold-scripts release",
+    "test": "uphold-scripts test",
+    "version": "uphold-scripts version"
   },
   "devDependencies": {
-    "babel-eslint": "^6.0.2",
-    "eslint": "^2.7.0",
-    "eslint-config-seegno": "^4.0.0",
-    "eslint-plugin-babel": "^3.0.0",
-    "eslint-plugin-sort-class-members": "^1.0.1",
-    "isparta": "^4.0.0",
-    "jscs": "^2.11.0",
-    "jscs-config-seegno": "^2.0.0",
-    "mocha": "^2.3.4",
-    "pre-commit": "^1.1.2",
-    "should": "^8.0.0"
+    "uphold-scripts": "^0.4.0"
   },
   "engines": {
     "node": ">= 8.16.2"
