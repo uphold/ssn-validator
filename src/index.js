@@ -9,15 +9,27 @@
  */
 
 /**
+ * Excludes repeated numbers as TIN e.g. 111111111.
+ */
+
+const repeatedNumbers = Array.from({ length: 10 }, (_, i) => i).map(current => String(current).repeat(9));
+
+/**
  * Blacklist.
  */
 
-const blacklist = ['078051120', '219099999', '457555462'];
+const blacklist = ['078051120', '219099999', '457555462'].concat(repeatedNumbers);
+
+/**
+ * Excludes ascending and descending sequence as TIN e.g. 123456789.
+ */
+
+const sequence = Array.from({ length: 10 }, (_, i) => i).reduce((acc, current) => acc + current, '').repeat(2);
+const reverseSequence = sequence.split('').reverse().join('');
 
 /**
  * Expression.
  */
-
 const expression = /^(?!666|000|9\d{2})\d{3}[- ]{0,1}(?!00)\d{2}[- ]{0,1}(?!0{4})\d{4}$/;
 
 /**
@@ -29,7 +41,11 @@ function isValid(value) {
     return false;
   }
 
-  return blacklist.indexOf(value.replace(/\D/g, '')) === -1;
+  if (blacklist.indexOf(value.replace(/\D/g, '')) !== -1) {
+    return false;
+  }
+
+  return !sequence.includes(value) && !reverseSequence.includes(value);
 }
 
 /**
